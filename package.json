@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ManuMxrales/PI-Countries/issues"
   },
-  "homepage": "https://github.com/ManuMxrales/PI-Countries#readme"
+  "homepage": "https://github.com/ManuMxrales/PI-Countries#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }

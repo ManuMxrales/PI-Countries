@@ -7,15 +7,15 @@ module.exports = (sequelize) => {
     id:{
       type: DataTypes.STRING(3),
       primaryKey: true,
-      allowNull: false,
-      unique: true,
+      // allowNull: false,
+      // unique: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isAlpha: true,
-    }
+      }
     },
     image: {
       type: DataTypes.STRING,
@@ -38,8 +38,11 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     poblacion: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
+      validate: {
+        isInt: true,
+      }
     }
   });
 };

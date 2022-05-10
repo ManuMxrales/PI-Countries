@@ -8,7 +8,6 @@ module.exports = (sequelize) => {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: Sequelize.UUIDV4,
-      unique: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -34,11 +33,11 @@ module.exports = (sequelize) => {
       },
     },
     temporada: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.ENUM('invierno','verano','primavera','otoño'),
       validate: {
         isAlpha: true,
       },
     },
+    //Relacion a la tabla paises
   });
 };
