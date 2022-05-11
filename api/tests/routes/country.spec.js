@@ -6,7 +6,11 @@ const { Country, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const country = {
+  id: 'TES',
   name: 'Argentina',
+  image: 'testimg',
+  continents: 'contest',
+  capital: 'capitest'
 };
 
 describe('Country routes', () => {
