@@ -8,7 +8,11 @@ router.get("/", async (req, res) => {
   const { name } = req.query;
   if (name) {
     const paises = await service.find(name);
-    res.json(paises);
+    if(typeof paises === 'string'){
+      res.status(404).json(paises);
+    }else{
+      res.json(paises);
+    }
   } else {
     const paises = await service.getCountries();
     res.json(paises);
@@ -17,14 +21,16 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const paises = await service.findOne(id);
-  res.json(paises);
+  let idPais = id.toUpperCase();
+  const paises = await service.findOne(idPais);
+  if(typeof paises === 'string'){
+    res.status(404).json(paises);
+  }else{
+    res.json(paises);
+  }
 });
 
-router.post("/", async (req, res) => {
-  const body = req.body;
-  const newCountry = await service.getCountries(body);
-  res.status(201).json(newCountry);
-});
+
+
 
 module.exports = router;
