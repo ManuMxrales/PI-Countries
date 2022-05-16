@@ -1,0 +1,22 @@
+.pagina_inicial{
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.pagina_inicial_title{
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+.pagina_inicial_btn{
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    background: rgba( 255, 255, 255, 0.3 );
+    color: white;
+    font-size: 2rem;
+    border: 1px solid rgba(37, 119, 190, 0.6);
+}

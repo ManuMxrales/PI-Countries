@@ -1,0 +1,25 @@
+.buscador_input{
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    background-color: rgba( 255, 255, 255, 0.11 );
+    border: 1px solid rgba( 255, 255, 255, 0.3 );;
+}
+::placeholder{
+    color: white;
+    font-weight: 300;
+}
+.buscador_input input:hover {
+    outline: 1px solid rgba( 0, 47, 117, 0.3 );
+}
+@media (min-width:900px){
+    .buscador_input{
+        width: 500px;
+        background-color: rgba(37, 119, 190, 0.65);
+        height: 40px;
+    }
+}
