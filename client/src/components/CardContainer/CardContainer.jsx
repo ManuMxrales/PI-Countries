@@ -3,6 +3,7 @@ import s from "./CardContainer.module.css";
 import Card from "../Card/Card.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries } from "../../actions";
+import { Link } from 'react-router-dom';
 
 const CardContainer = () => {
   const state = useSelector((state) => state);
@@ -27,12 +28,14 @@ const CardContainer = () => {
       <div className={s.card_container}>
       {currentCountries.map((country) => {
         return (
+          <Link key={country.id} to={`/ruta-principal/${country.id}`}>
           <Card
-            key={country.id}
+            id={country.id}
             name={country.name}
             image={country.image}
             continents={country.continents}
           />
+          </Link>
         );
       })}
       </div>

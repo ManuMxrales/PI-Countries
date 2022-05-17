@@ -1,12 +1,9 @@
-import React from 'react';
+import React from "react";
 import s from "./Card.module.css";
-import { useDispatch, useSelector } from 'react-redux';
 
 
 
 const Card = ({name, continents, image, id}) => {
-    const state = useSelector(state => state.country.worldCountries);
-    const dispatch = useDispatch();
 
   return (
     <div className={s.card} key={id}>

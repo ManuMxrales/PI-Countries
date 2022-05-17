@@ -18,9 +18,9 @@
   justify-content: center;
   align-content: center;
   grid-auto-flow: column;
-  grid-template-rows: repeat(3, 210px);
+  grid-template-rows: repeat(3, minmax(min-content, 250px));
   /* grid-template-columns: repeat(auto-fit, minmax(100px, 290px)); */
-  grid-auto-columns: minmax(min-content, 290px);
+  grid-auto-columns: minmax(min-content, 250px);
   grid-gap: 20px;
 }
 

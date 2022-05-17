@@ -25,19 +25,17 @@ export const deleteAction = (id) => ({type:DELETE_DATA, payload: id});
 export const noAction = () => ({type:NO_DATA});
 export const loadingData = (estado) => ({type: LOADING, payload: estado})
 
-export function loading(estado){
-    return loadingData;
-}
 
 export function getCountries(){
     return (dispatch) => {
-        dispatch(loading(true));
+        dispatch(loadingData(true));
         return fetch('http://localhost:3001/countries')
            .then((res) => res.json())
            .then((data) => {
-              dispatch(loading(false));
+              dispatch(loadingData(false));
             //   console.log(data);
               return dispatch(readAction(data));
            });
      };
 }
+
