@@ -1,0 +1,30 @@
+.main_container {
+  min-width: 320px;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+/* .card_container :hover {
+  backdrop-filter: blur(4px);
+} */
+.card_container {
+  display: grid;
+  width: 100%;
+  height: 85vh;
+  justify-content: center;
+  align-content: center;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(3, 210px);
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 290px)); */
+  grid-auto-columns: minmax(min-content, 290px);
+  grid-gap: 20px;
+}
+
+/* .card_container :nth-child(5) {
+    grid-area: 2 / 2 / 4 / 4;
+    1fr
+} */

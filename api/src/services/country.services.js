@@ -13,7 +13,7 @@ class CountryService {
         return {
           id: c.cca3,
           name: c.name.common.toLowerCase(),
-          image: c.flags[0],
+          image: c.flags[1],
           continents: Array.isArray(c.continents)
             ? c.continents[0]
             : c.continents,
