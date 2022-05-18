@@ -10,7 +10,7 @@ try {
   if (name) {
     const paises = await service.find(name);
     if(typeof paises === 'string'){
-      res.status(404).json(paises);
+      res.json(paises);
     }else{
       res.json(paises);
     }
