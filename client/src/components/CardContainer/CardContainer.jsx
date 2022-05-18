@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./CardContainer.module.css";
 import Card from "../Card/Card.jsx";
+import { NotFound } from "../NotFound/NotFound.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries } from "../../actions";
 import { Link } from "react-router-dom";
@@ -16,7 +17,7 @@ const CardContainer = () => {
   const FirstCountry = LastCountry - countriesPerPage;
   const currentCountries = countries.slice(FirstCountry, LastCountry);
   const searchCountries = country.slice(FirstCountry, LastCountry);
-  
+
   useEffect(() => {
     dispatch(getCountries());
   }, [dispatch]);
@@ -24,8 +25,9 @@ const CardContainer = () => {
   return (
     <div className={s.main_container}>
       <div className={s.card_container}>
-        {inputSearch
-          ? searchCountries.map((country) => {
+        {inputSearch ? (
+          Array.isArray(searchCountries) ? (
+            searchCountries.map((country) => {
               return (
                 <Link key={country.id} to={`/ruta-principal/${country.id}`}>
                   <Card
@@ -37,19 +39,27 @@ const CardContainer = () => {
                 </Link>
               );
             })
-          : currentCountries.map((country) => {
-              return (
-                <Link key={country.id} to={`/ruta-principal/${country.id}`}>
-                  <Card
-                    id={country.id}
-                    name={country.name}
-                    image={country.image}
-                    continents={country.continents}
-                  />
-                </Link>
-              );
+          ) : (
+            <NotFound />
+          )
+        ) : (
+          Array.isArray(currentCountries) ? 
+          currentCountries.map((country) => {
+            return (
+              <Link key={country.id} to={`/ruta-principal/${country.id}`}>
+                <Card
+                  id={country.id}
+                  name={country.name}
+                  image={country.image}
+                  continents={country.continents}
+                />
+              </Link>
+            );
           })
-        }
+          : (
+            <NotFound />
+          )
+        )}
       </div>
     </div>
   );

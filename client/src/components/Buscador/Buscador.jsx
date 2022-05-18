@@ -7,18 +7,18 @@ const Buscador = () => {
   const inputSearch = useSelector((state) => state.country.searchNameCountry);
   const [input, setInput] = useState("");
   const [errors, setErrors] = useState({});
+
   const onSearchValueChange = (event) => {
-    let inputCheck = event.target.value
+    let inputCheck = event.target.value;
     validate(input);
     setInput(inputCheck);
   };
   const validate = (inputChec) => {
-    
-    if (typeof inputChec !== 'string') {
-      setErrors.info = "Pais no valido, Verifica la Informacion"
+    if (typeof inputChec !== "string") {
+      setErrors.info = "Pais no valido, Verifica la Informacion";
       return errors.info;
     }
-  }
+  };
   useEffect(() => {
     if (input.length >= 3) {
       dispatch(getCountriesName(input));

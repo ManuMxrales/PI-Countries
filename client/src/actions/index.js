@@ -61,13 +61,14 @@ export function getCountriesName(name){
       dispatch(loadingData(true));
       return fetch(`http://localhost:3001/countries?name=${name}`)
       .then((res) => res.json())
+      .catch((err)=> console.error(err + "atrape error en action"))
       .then((data) => {
          dispatch(loadingData(false));
          console.log(data);
          dispatch(checkInput(true));
          return dispatch(readActionName(data));
       })
-      .catch((err)=> console.error(err));
+      .catch((err)=> console.error(err + "atrape error en action"));
       
    };
 }
