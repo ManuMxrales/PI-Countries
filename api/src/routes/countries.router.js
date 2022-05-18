@@ -5,6 +5,7 @@ const CountryService = require("../services/country.services.js");
 const service = new CountryService();
 
 router.get("/", async (req, res) => {
+try {
   const { name } = req.query;
   if (name) {
     const paises = await service.find(name);
@@ -17,6 +18,9 @@ router.get("/", async (req, res) => {
     const paises = await service.getCountries();
     res.json(paises);
   }
+} catch (error) {
+  console.log(error)
+}
 });
 
 router.get("/:id", async (req, res) => {
