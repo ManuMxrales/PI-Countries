@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./Buscador.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountriesName, checkInput } from "../../actions";
+import { getCountriesName, checkInput, getCountries } from "../../actions";
 const Buscador = () => {
   const dispatch = useDispatch();
   const inputSearch = useSelector((state) => state.country.searchNameCountry);
@@ -26,6 +26,7 @@ const Buscador = () => {
 
     if (inputSearch === true && input.length === 0) {
       dispatch(checkInput(false));
+      dispatch(getCountries());
     }
   }, [dispatch, input.length, input, inputSearch]);
 
