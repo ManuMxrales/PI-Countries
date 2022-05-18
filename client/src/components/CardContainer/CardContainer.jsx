@@ -42,8 +42,7 @@ const CardContainer = () => {
           ) : (
             <NotFound />
           )
-        ) : (
-          Array.isArray(currentCountries) ? 
+        ) : Array.isArray(currentCountries) ? (
           currentCountries.map((country) => {
             return (
               <Link key={country.id} to={`/ruta-principal/${country.id}`}>
@@ -56,9 +55,8 @@ const CardContainer = () => {
               </Link>
             );
           })
-          : (
-            <NotFound />
-          )
+        ) : (
+          <NotFound />
         )}
       </div>
     </div>
