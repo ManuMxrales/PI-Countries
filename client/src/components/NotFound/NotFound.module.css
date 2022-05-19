@@ -1,0 +1,55 @@
+.NotFoundContainer{
+    background-image: url("../../assets/404.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+}
+.NotFoundContainer p{
+    color: white;
+    font-weight: 300;
+    font-size: 1.6rem;
+}
+.NotFoundContainer h1{
+    font-weight: 700;
+    font-size: 2rem;
+}
+/* .btn{
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: 400;
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+    font-size: 2rem;
+    font-weight: 400;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(1px);
+    margin: 10px;
+}
+.buttonContainer button:hover {
+    background: rgb(252, 252, 252);
+    cursor: pointer;
+    color: black;
+  } */
+@media (min-width: 700px) {
+    .NotFoundContainer{
+        width: 800px;
+        height: 700px;
+    }
+    .NotFoundContainer p{
+        color: white;
+        font-weight: 300;
+        font-size: 2.4rem;
+    }
+    .NotFoundContainer h1{
+        font-weight: 700;
+        font-size: 3rem;
+    }
+}
