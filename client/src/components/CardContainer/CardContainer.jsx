@@ -10,9 +10,9 @@ const CardContainer = () => {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.country.worldCountries);
   const country = useSelector((state) => state.country.worldCountries);
+  const inputSearch = useSelector((state) => state.country.searchNameCountry);
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage, setCountriesPerPage] = useState(9);
-  const inputSearch = useSelector((state) => state.country.searchNameCountry);
   const LastCountry = currentPage * countriesPerPage;
   const FirstCountry = LastCountry - countriesPerPage;
   const currentCountries = countries.slice(FirstCountry, LastCountry);

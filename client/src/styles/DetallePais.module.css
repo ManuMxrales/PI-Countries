@@ -3,7 +3,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: url("../../src/assets/bgd.jpg");
   background-size: cover;
   background-position: center;
@@ -82,8 +82,9 @@ main {
   flex-direction: column;
 }
 .ActivitiesContainer p {
-  font-size: 1.6;
+  font-size: 1.8rem;
   font-weight: 300;
+
 }
 @media (min-width: 700px) {
   .DetailContainer {
@@ -114,5 +115,8 @@ main {
   }
   .buttonContainer {
     flex-direction: row;
+  }
+  main{
+    height: 100vh;
   }
 }

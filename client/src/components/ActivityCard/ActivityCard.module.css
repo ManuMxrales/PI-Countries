@@ -1,0 +1,29 @@
+.ActivityCardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: red;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+.ActivityCardContainer h1{
+    color: black;
+}
+.ActivityCardContainer p {
+    font-weight: 400;
+}
+.ActivityCardContainer:hover{
+    box-shadow: 0 8px 32px 0 rgba(0, 47, 117, 0.3);
+    backdrop-filter: blur(4px);
+
+    
+}
+@media (min-width: 700px) {
+    .ActivityCardContainer{
+        flex-direction: row;
+    }
+}

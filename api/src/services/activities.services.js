@@ -7,7 +7,8 @@ class ActivitieService {
             name: name,
             difficulty: difficulty,
             duration: duration,
-            season: season
+            season: season,
+            
         });
         pais.forEach(async (p) => {
             let act = await Country.findOne({

@@ -5,6 +5,7 @@ import { Inicial } from './components/Inicial.jsx';
 import { Principal } from './components/Principal.jsx';
 import { NotFound } from './components/NotFound/NotFound.jsx';
 import DetallePais from "./components/DetallePais";
+import ActividadT from "./components/ActividadT";
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ function App() {
         <Route exact path="/" element={ <Inicial /> } />
         <Route exact path="/ruta-principal" element={ <Principal /> } />
         <Route path="/ruta-principal/:id" element={ <DetallePais /> } />
+        <Route path="/ruta-actividad" element={ <ActividadT /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

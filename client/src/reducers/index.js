@@ -1,8 +1,9 @@
-import { READ_DATA, LOADING, READ_DATA_DETAIL, READ_DATA_NAME, CHECK_INPUT, ERROR } from "../actions";
+import { READ_DATA, LOADING, READ_DATA_DETAIL, READ_DATA_NAME, CHECK_INPUT, ERROR, READ_ACTIVITY } from "../actions";
 
 const initialState = {
   worldCountries: [],
   pais: [],
+  activities: [],
   searchNameCountry: false,
   loading: false,
   error: false
@@ -41,7 +42,11 @@ function rootReducer(state = initialState, action) {
           ...state,
           worldCountries: action.payload,
         };
-
+    case READ_ACTIVITY:
+      return {
+        ...state,
+        activities: action.payload
+      }
     default:
       return { ...state };
   }
