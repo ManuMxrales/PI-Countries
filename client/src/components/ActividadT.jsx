@@ -138,8 +138,7 @@ const ActividadT = () => {
         </div>
         <div className={s.DificultadContainer}>
           <label htmlFor="duration">Duracion</label>
-          <select name="duration" id="duration" onChange={(e) => handleInputCheckNumber(e)} >
-          
+          <select name="duration" id="duration" onChange={handleInputCheckNumber} >
             <option value="1">1 Dia</option>
             <option value="2">2 Dias</option>
             <option value="3">3 Dias</option>

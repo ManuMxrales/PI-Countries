@@ -3,16 +3,22 @@ display: flex;
 flex-direction: column;
 flex-wrap: wrap;
 align-items: center;
-width: 100%;
 color: white;
 border: 1px solid rgba(0, 0, 0, 0.2);
 background-color: rgba(37, 119, 190, 0.1);
-backdrop-filter: blur( 1px );
+backdrop-filter: blur( 4px );
 border-radius: 10px;
+min-width: 150px;
+min-height: 150px;
+max-width: 500px;
+max-height: 500px;
+padding: 10px;
+margin: 5px;
 }
 .card:hover{
-    border: 1px solid rgba(37, 119, 190, 0.3);
-    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 47, 117, 0.3);
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 img{
     width: 100%;
@@ -23,29 +29,29 @@ img{
 .cardimg{
     display: flex;
     justify-content: center;
-    height: 50%;
-    margin: 0 auto;
-    border-radius: 20px;
+    height: 100px;
+    width: 100px;
 }
 .cardinfo{
     width: 100%;
-    height: 50%;
-    padding: 10px;
-    margin: 0 auto;
     text-align: center;
     font-weight: 400;
 }
 .cardinfo h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .cardinfo p {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 @media (min-width:900px){
     .cardinfo h3 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     .cardinfo p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+    }
+    .cardimg{
+        height: 200px;
+        width: 200px;
     }
 }

@@ -28,7 +28,7 @@ const Buscador = () => {
   }, [dispatch, input.length, input, inputSearch]);
 
   return (
-    <>
+    <div className={s.buscador}>
       <input
         type="text"
         value={input}
@@ -38,7 +38,7 @@ const Buscador = () => {
         onChange={onSearchValueChange}
       />
       <p className={s.p_input}>{message.current}</p>
-    </>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 .nav_bar {
-  height: 90px;
+  height: 100px;
   width: 100%;
   top: 0;
   left: 0;
@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 10px;
   box-sizing: border-box;
 }
 .nav_bar nav {
