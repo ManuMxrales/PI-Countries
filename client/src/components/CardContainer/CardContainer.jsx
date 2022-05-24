@@ -42,14 +42,14 @@ const CardContainer = () => {
         <div className={s.card_container}>
           {inputSearch ? (
             Array.isArray(searchCountries) ? (
-              searchCountries.map((country) => {
+              searchCountries.map((pais) => {
                 return (
-                  <Link key={country.id} to={`/ruta-principal/${country.id}`}>
+                  <Link key={pais.id} to={`/ruta-principal/${pais.id}`}>
                     <Card
-                      id={country.id}
-                      name={country.name}
-                      image={country.image}
-                      continents={country.continents}
+                      id={pais.id}
+                      name={pais.name}
+                      image={pais.image}
+                      continents={pais.continents}
                     />
                   </Link>
                 );

@@ -9,6 +9,10 @@ export const LOADING = 'LOADING';
 export const CHECK_INPUT = 'CHECK_INPUT';
 export const ERROR = 'ERROR';
 export const READ_ACTIVITY = 'READ_ACTIVITY';
+export const ORDER_NAME = 'ORDER_NAME';
+export const ORDER_POPULATION = 'ORDER_POPULATION';
+export const ORDER_CONTINENT = 'ORDER_CONTINENT';
+export const ORDER_BY_ACTIVITY = 'ORDER_BY_ACTIVITY';
 
 export const createAction = (data) => ({type:CREATE_DATA, payload: data});
 export const readAction = (data) => ({type:READ_DATA, payload: data});
@@ -21,6 +25,10 @@ export const errr = (estado) => ({type:ERROR, payload: estado});
 export const loadingData = (estado) => ({type: LOADING, payload: estado})
 export const checkInput = (estado) => ({type: CHECK_INPUT, payload: estado})
 export const readActivity = (data) => ({type: READ_ACTIVITY, payload: data})
+export const orderByName = (data) => ({type: ORDER_NAME, payload: data})
+export const orderByPopulation = (data) => ({type: ORDER_POPULATION, payload: data})
+export const orderByContinent = (data) => ({type: ORDER_CONTINENT, payload: data})
+export const orderByActivity = (data) => ({type: ORDER_BY_ACTIVITY, payload:data})
 
 export function getCountries(){
     return (dispatch) => {

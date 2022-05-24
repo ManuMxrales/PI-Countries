@@ -15,14 +15,15 @@
   color: white;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 ::placeholder {
   color: white;
   font-weight: 300;
 }
 .buscador_input input:hover {
-  outline: 1px solid rgba(0, 47, 117, 0.3);
+  outline: 1px solid rgba(0, 47, 117, 0.8);
 }
 .p_input {
   margin-top: 5px;

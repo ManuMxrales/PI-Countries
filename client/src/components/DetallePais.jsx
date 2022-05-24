@@ -12,6 +12,7 @@ const DetallePais = () => {
 
   useEffect(() => {
     dispatch(getCountriesId(id));
+    dispatch(getActivities());
   }, [dispatch, id]);
 
   return (
@@ -50,7 +51,7 @@ const DetallePais = () => {
                 Area
                 <br />
               </strong>
-              {country.area}
+              {country.area} Km2
             </p>
             <p>
               <strong>

@@ -21,7 +21,7 @@ main {
   color: black;
   padding: 30px;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
   border-radius: 10px;
 }
 .ImageContainer {
@@ -81,10 +81,28 @@ main {
   justify-content: center;
   flex-direction: column;
 }
+.ActivitiesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-x: scroll;
+  overscroll-behavior-x:contain;
+  scroll-snap-type: x proximity;
+}
 .ActivitiesContainer p {
   font-size: 1.8rem;
   font-weight: 300;
 
+}
+/* ::-webkit-scrollbar {
+  background: rgba(255, 255, 255, 0.6);
+} */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.6); 
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2); 
 }
 @media (min-width: 700px) {
   .DetailContainer {
@@ -94,7 +112,7 @@ main {
     width: 80%;
     height: 90%;
     background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
   }
   .MainContainer {
     display: flex;
@@ -118,5 +136,8 @@ main {
   }
   main{
     height: 100vh;
+  }
+  .ActivitiesContainer{
+    overflow-x: hidden;
   }
 }

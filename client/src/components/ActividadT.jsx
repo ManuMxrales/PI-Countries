@@ -19,10 +19,11 @@ const ActividadT = () => {
   const searchCountries = paises?.slice(0, 3);
   let RegExpression = /^[a-zA-Z\s]*$/;
   let message = useRef("");
+  
   const handleSubmit = (e) => {
     e.preventDefault();      
       console.log(input);
-      if (input.name.length < 3 || !input.pais.length === 0 || !input.difficulty || !input.duration || !input.season) {
+      if (input.name.length < 3 || !input.pais.length === 0 || !input.difficulty || !input.duration || !input.season || input.name.trim().length === 0) {
         setMensajeEnviado("Informacion Insuficiente");
       }else{
         dispatch(postActivities(input))
