@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Country, Activities } = require("../db");
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
 
 class CountryService {
   constructor() {
@@ -34,7 +34,11 @@ class CountryService {
   }
   async getCountries() {
     try {
-      const instancias = await Country.findAll();
+      const instancias = await Country.findAll({
+        include: {
+          model: Activities,
+        },
+      });
       return instancias;
     } catch (error) {
       throw Error(error);
@@ -43,29 +47,31 @@ class CountryService {
 
   async find(name) {
     try {
-    const instancias = await Country.findAll({
+      const instancias = await Country.findAll({
         where: {
-          name: {[Op.substring]:name},
+          name: { [Op.substring]: name },
         },
         include: {
           model: Activities,
-        }
+        },
       });
-      return instancias.length? instancias : 'No existe un pais con ese nombre';
+      return instancias.length
+        ? instancias
+        : "No existe un pais con ese nombre";
     } catch (error) {
       throw Error(error.message);
     }
   }
 
-async findOne(id) {
+  async findOne(id) {
     try {
       let realId = id.substring(1);
-      const instancias = await Country.findByPk(realId,{
+      const instancias = await Country.findByPk(realId, {
         include: {
           model: Activities,
-        }
+        },
       });
-     return instancias? instancias : 'No existe un pais con ese ID';
+      return instancias ? instancias : "No existe un pais con ese ID";
     } catch (error) {
       throw Error(error.message);
     }

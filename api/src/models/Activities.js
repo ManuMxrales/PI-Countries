@@ -14,9 +14,6 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isAlpha: true,
-        },
       },
       difficulty: {
         type: DataTypes.INTEGER,
