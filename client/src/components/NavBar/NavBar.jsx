@@ -3,49 +3,60 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import s from "./NavBar.module.css";
 import Buscador from "../Buscador/Buscador.jsx";
-import { orderByName, orderByPopulation, orderByContinent, getActivities, getCountries, orderByActivity } from "../../actions";
+import {
+  orderByName,
+  orderByPopulation,
+  orderByContinent,
+  getActivities,
+  getCountries,
+  orderByActivity,
+  orderPage,
+} from "../../actions";
 const NavBar = () => {
   const actividades = useSelector((state) => state.country.activities);
-const dispatch = useDispatch();
+  const currentSearch = useSelector((state) => state.country.currentSearch);
+  const volverPagina = useSelector((state) => state.country.orderContinent);
+  const dispatch = useDispatch();
 
-function ordenamiento(e){
-  
-  let filtro = e.target.value;
-  let key;
-  if (filtro === 'az' || filtro === 'za') {
-     key = 'nombre'
+  function ordenamiento(e) {
+    let filtro = e.target.value;
+    let key;
+    if (filtro === "az" || filtro === "za") {
+      key = "nombre";
+    }
+    if (filtro === "mayorPoblacion" || filtro === "menorPoblacion") {
+      key = "numPoblacion";
+    }
+    if (filtro === "All") {
+      key = "All";
+    }
+    switch (key) {
+      case "nombre":
+        dispatch(orderByName(e.target.value));
+        break;
+      case "numPoblacion":
+        dispatch(orderByPopulation(e.target.value));
+        break;
+      case "All":
+        dispatch(getCountries());
+        dispatch(orderPage(false));
+        break;
+      default:
+        if(volverPagina) dispatch(orderPage(false));
+        dispatch(orderByContinent(e.target.value));
+        break;
+    }
   }
-  if (filtro === 'mayorPoblacion' || filtro === 'menorPoblacion') {
-    key = 'numPoblacion'
- }
- if(filtro === 'All'){
-   key = 'All'
- }
- switch (key) {
-   case 'nombre':
-     dispatch(orderByName(e.target.value));
-     break;
-  case 'numPoblacion':
-    dispatch(orderByPopulation(e.target.value))
-    break;
-  case 'All':
-    dispatch(getCountries())
-    break;
-    default:
-    dispatch(orderByContinent(e.target.value))
-     break;
- }
-}
-function filtroAct(e){
-  if(e.target.value === 'All'){
-    dispatch(getCountries())
+  function filtroAct(e) {
+    if (e.target.value === "All") {
+      dispatch(getCountries());
+    }
+    dispatch(orderByActivity(e.target.value));
   }
-  dispatch(orderByActivity(e.target.value))
-}
 
-useEffect(() => {
-  dispatch(getActivities());
-}, [dispatch]);
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch]);
 
   return (
     <header className={s.nav_bar}>
@@ -55,6 +66,7 @@ useEffect(() => {
             <NavLink to="/">Countries</NavLink>
           </li>
         </ul>
+        <h1>{currentSearch}</h1>
       </nav>
       <div>
         <Buscador />
@@ -64,7 +76,7 @@ useEffect(() => {
           <label htmlFor="orderBy">Filtrar Por:</label>
         </div>
         <div>
-          <select name="orderBy" id="orderBy" onChange={(e)=>ordenamiento(e)}>
+          <select name="orderBy" id="orderBy" onChange={(e) => ordenamiento(e)}>
             <option value="All">Todos</option>
             <option disabled>Nombre</option>
             <option value="az">A-Z</option>
@@ -81,14 +93,19 @@ useEffect(() => {
             <option value="Europe">Europa</option>
             <option value="Oceania">Oceania</option>
           </select>
-        <select name="orderByActivities" id="orderByActivities" onChange={(e)=>filtroAct(e)}>
-          <option value="All">Cualquier Actividad</option>
-          {
-            actividades && actividades.map((act, i) => (
-              <option key={i} value={act.name}>{act.name}</option>
-            ))
-          }
-        </select>
+          <select
+            name="orderByActivities"
+            id="orderByActivities"
+            onChange={(e) => filtroAct(e)}
+          >
+            <option value="All">Cualquier Actividad</option>
+            {actividades &&
+              actividades.map((act, i) => (
+                <option key={i} value={act.name}>
+                  {act.name}
+                </option>
+              ))}
+          </select>
         </div>
       </div>
     </header>
