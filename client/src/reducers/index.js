@@ -10,6 +10,7 @@ import {
   ORDER_POPULATION,
   ORDER_CONTINENT,
   ORDER_BY_ACTIVITY,
+  ORDER_PAGE,
 } from "../actions";
 
 const initialState = {
@@ -20,6 +21,8 @@ const initialState = {
   searchNameCountry: false,
   loading: false,
   error: false,
+  orderContinent: false,
+  currentSearch: "",
 };
 
 function rootReducer(state = initialState, action) {
@@ -45,6 +48,7 @@ function rootReducer(state = initialState, action) {
         pais: action.payload,
         worldCountries: action.payload,
         fCountry: action.payload,
+        currentSearch: "",
       };
     case READ_DATA_DETAIL:
       return {
@@ -100,6 +104,8 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         worldCountries: orderByContinent,
+        currentSearch: action.payload,
+        orderContinent:true,
       };
     case ORDER_BY_ACTIVITY:
       const allCountries2 = state.fCountry;
@@ -108,6 +114,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         worldCountries: orderByActivity,
       };
+     case ORDER_PAGE:
+       return {
+         ...state,
+        orderContinent: action.payload
+       } 
     default:
       return { ...state };
   }
