@@ -3,7 +3,7 @@ import s from "./CardContainer.module.css";
 import Card from "../Card/Card.jsx";
 import { NotFound } from "../NotFound/NotFound.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries } from "../../actions";
+import { getCountries, orderPage } from "../../actions";
 import { Link } from "react-router-dom";
 import Paginate from "../Paginate/Paginate";
 
@@ -12,8 +12,9 @@ const CardContainer = () => {
   const countries = useSelector((state) => state.country.worldCountries);
   const country = useSelector((state) => state.country.worldCountries);
   const inputSearch = useSelector((state) => state.country.searchNameCountry);
+  const volverPagina = useSelector((state) => state.country.orderContinent);
   const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setCountriesPerPage] = useState(10);
+  const [countriesPerPage /*setCountriesPerPage*/] = useState(10);
   const LastCountry = currentPage * countriesPerPage;
   const FirstCountry = LastCountry - countriesPerPage;
   const currentCountries = countries.slice(FirstCountry, LastCountry);
@@ -22,19 +23,24 @@ const CardContainer = () => {
     setCurrentPage(pageNumber);
   };
   const paginaAnterior = () => {
-    if(currentPage > 1){
+    if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
   const paginaSiguiente = () => {
     if (currentPage < Math.ceil(countries.length / countriesPerPage)) {
-      setCurrentPage(currentPage + 1)
+      setCurrentPage(currentPage + 1);
     }
-  }
+  };
 
   useEffect(() => {
-    dispatch(getCountries());
-  }, [dispatch]);
+    if(inputSearch || volverPagina){
+      setCurrentPage(1)
+    }else{
+      dispatch(getCountries());
+    }
+    
+  }, [dispatch,inputSearch,volverPagina]);
 
   return (
     <>
@@ -75,15 +81,15 @@ const CardContainer = () => {
           )}
         </div>
       </div>
-            <div className={s.pagiStyle}>
-            <Paginate
-        countriesPerPage={countriesPerPage}
-        allCountries={countries.length}
-        paginated={pagina}
-        paginaAnterior={paginaAnterior}
-        paginaSiguiente={paginaSiguiente}
-      />
-            </div>
+      <div className={s.pagiStyle}>
+        <Paginate
+          countriesPerPage={countriesPerPage}
+          allCountries={countries.length}
+          paginated={pagina}
+          paginaAnterior={paginaAnterior}
+          paginaSiguiente={paginaSiguiente}
+        />
+      </div>
     </>
   );
 };
