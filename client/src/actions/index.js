@@ -13,6 +13,7 @@ export const ORDER_NAME = 'ORDER_NAME';
 export const ORDER_POPULATION = 'ORDER_POPULATION';
 export const ORDER_CONTINENT = 'ORDER_CONTINENT';
 export const ORDER_BY_ACTIVITY = 'ORDER_BY_ACTIVITY';
+export const ORDER_PAGE = 'ORDER_PAGE';
 
 export const createAction = (data) => ({type:CREATE_DATA, payload: data});
 export const readAction = (data) => ({type:READ_DATA, payload: data});
@@ -29,6 +30,7 @@ export const orderByName = (data) => ({type: ORDER_NAME, payload: data})
 export const orderByPopulation = (data) => ({type: ORDER_POPULATION, payload: data})
 export const orderByContinent = (data) => ({type: ORDER_CONTINENT, payload: data})
 export const orderByActivity = (data) => ({type: ORDER_BY_ACTIVITY, payload:data})
+export const orderPage = (data) => ({type: ORDER_PAGE, payload: data})
 
 export function getCountries(){
     return (dispatch) => {
@@ -37,7 +39,6 @@ export function getCountries(){
            .then((res) => res.json())
            .then((data) => {
               dispatch(loadingData(false));
-            //   console.log(data);
               return dispatch(readAction(data));
            });
      };
@@ -49,7 +50,6 @@ export function getCountriesId(id){
       .then((res) => res.json())
       .then((data) => {
          dispatch(loadingData(false));
-         // console.log(data);
          return dispatch(readActionDetail(data));
       });
    };
@@ -62,7 +62,6 @@ export function getCountriesName(name){
       .catch((err)=> console.error(err + "atrape error en action"))
       .then((data) => {
          dispatch(loadingData(false));
-         // console.log(data);
          dispatch(checkInput(true));
          return dispatch(readActionName(data));
       })
@@ -77,7 +76,6 @@ export function getActivities(){
        .then((res) => res.json())
        .then((data) => {
           dispatch(loadingData(false));
-         //  console.log(data);
           return dispatch(readActivity(data));
        });
     };
